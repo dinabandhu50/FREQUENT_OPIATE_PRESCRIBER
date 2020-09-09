@@ -14,5 +14,5 @@ pipe = Pipeline([
     ('freq',pp.FrequencyCatEncoder(cols=config.MULTI_CAT_VARIABLES)),
     ('pca',pp.PCATransformer(cols=config.NUM_COLS,n_components=0.8)),
     ('scaler',MinMaxScaler((0, 100))),
-    ('clf',LogisticRegression())
+    ('clf',GradientBoostingClassifier())
 ])
