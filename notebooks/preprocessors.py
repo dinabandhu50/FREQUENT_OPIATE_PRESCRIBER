@@ -68,24 +68,29 @@ class FrequencyCatEncoder(BaseEstimator, TransformerMixin):
         return X
 
 
-class OneHOtCatEncoder(BaseEstimator,TransformerMixin):
+class OneHotCatEncoder(BaseEstimator,TransformerMixin):
 
     def __init__(self,cols=None,**kwargs):
         if not isinstance(cols,list):
             self.variables = [cols]
         else:
             self.variables = cols
-        self.encoder = OneHotEncoder(**kwargs)
+
+        self.encoder = {}
+        for var in self.variables:
+            self.encoder[var] = OneHotEncoder(sparse=False,**kwargs)
     
     def fit(self,X,y=None):
-        self.encoder.fit(X[self.variables])
+        for var in self.variables:
+            self.encoder[var].fit(X[var].values.reshape(-1,1))
         return self
     
     def transform(self, X):
-        X = X.copy()
-        X_ohe = self.encoder.transform(X[self.variables])
-        X_transformed = pd.concat([X.drop(self.variables),pd.DataFrame(X_ohe).add_prefix(self.variables)],azis=1)
-        return X_transformed
+        X = X.copy().reset_index(drop=True)
+        for var in self.variables:
+            X_ohe = self.encoder[var].transform(X[var].values.reshape(-1,1))
+            X = pd.concat([X.drop(var,axis=1),pd.DataFrame(X_ohe).add_prefix(var+'_')],axis=1)
+        return X
 
     def fit_transform(self,X,y=None):
         self.fit(X)
@@ -134,8 +139,8 @@ class FeaturesToDrop(BaseEstimator, TransformerMixin):
     def transform(self, X):
         # encode labels
         X = X.copy()
-        if self.variables in list(X.columns):
-            X = X.drop(self.variables, axis=1)
+        # if self.variables in list(X.columns):
+        X = X.drop(self.variables, axis=1)
         return X 
 
     def fit_transform(self,X,y=None):

@@ -53,5 +53,7 @@ NUM_COLS = ['ABILIFY', 'ACETAMINOPHEN.CODEINE', 'ACYCLOVIR', 'ADVAIR.DISKUS', 'A
 BINARY_CAT_VARIABLES = ['Gender']
 MULTI_CAT_VARIABLES = ['State', 'Specialty']
 DROP_COLS = ['NPI','Credentials']
+
+
 # model saving
 MODEL_SAVE = PROJECT_ROOT_DIR + "/models"
