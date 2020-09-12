@@ -11,7 +11,7 @@ DESCRIPTION = 'Frequent Opiate Prescriber classification project'
 URL = 'https://github.com/dinabandhu50/FREQUENT_OPIATE_PRESCRIBER'
 EMAIL = 'beheradinabandhu50@gmail.com'
 AUTHOR = 'Dinabandhu Behera'
-REQUIRES_PYTHON = '>=3.8.5'
+REQUIRES_PYTHON = '>=3.8.0'
 
 
 # Packages that are required for this module to be executed
@@ -57,7 +57,7 @@ setup(
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
-    packages=find_packages(exclude=('tests','notebooks','api',))
+    packages=find_packages(exclude=('tests','notebooks','api',)),
     package_data={'package_fop': ['VERSION']},
     install_requires=list_reqs(),
     extras_require={},

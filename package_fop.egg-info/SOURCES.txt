@@ -1,0 +1,15 @@
+MANIFEST.in
+README.md
+requirements.txt
+setup.py
+package_fop/__init__.py
+package_fop/config.py
+package_fop/pipeline.py
+package_fop/predict.py
+package_fop/preprocessors.py
+package_fop/train_pipeline.py
+package_fop.egg-info/PKG-INFO
+package_fop.egg-info/SOURCES.txt
+package_fop.egg-info/dependency_links.txt
+package_fop.egg-info/requires.txt
+package_fop.egg-info/top_level.txt
