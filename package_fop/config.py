@@ -56,7 +56,7 @@ DROP_COLS = ['NPI','Credentials']
 
 
 # model saving
-SAVED_MODEL = PROJECT_ROOT_DIR + "/trained_models/model.joblib"
+SAVED_MODEL = PROJECT_ROOT_DIR + "package_fop/trained_models/model.joblib"
 
 # version
 VERSION_PATH = config.PROJECT_ROOT_DIR + "/package_fop/VERSION"

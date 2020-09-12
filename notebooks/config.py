@@ -56,4 +56,4 @@ DROP_COLS = ['NPI','Credentials']
 
 
 # model saving
-MODEL_SAVE = PROJECT_ROOT_DIR + "/models"
+MODEL_SAVE = PROJECT_ROOT_DIR + "/notebooks/trained_models/model.joblib"

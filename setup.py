@@ -6,12 +6,12 @@ from setuptools import find_packages, setup
 
 
 # Package meta-data.
-NAME = 'regression_model'
-DESCRIPTION = 'Regression model for using in the Train In Data online course "Deployment of Machine Learning Models".'
-URL = 'https://github.com/trainindata/deploying-machine-learning-models'
-EMAIL = 'christopher.samiullah@protonmail.com'
-AUTHOR = 'ChristopherGS'
-REQUIRES_PYTHON = '>=3.6.0'
+NAME = 'package_fop'
+DESCRIPTION = 'Frequent Opiate Prescriber classification project'
+URL = 'https://github.com/dinabandhu50/FREQUENT_OPIATE_PRESCRIBER'
+EMAIL = 'beheradinabandhu50@gmail.com'
+AUTHOR = 'Dinabandhu Behera'
+REQUIRES_PYTHON = '>=3.8.5'
 
 
 # Packages that are required for this module to be executed
@@ -39,7 +39,7 @@ except FileNotFoundError:
 
 # Load the package's __version__.py module as a dictionary.
 ROOT_DIR = Path(__file__).resolve().parent
-PACKAGE_DIR = ROOT_DIR / 'regression_model'
+PACKAGE_DIR = ROOT_DIR / 'package_fop'
 about = {}
 with open(PACKAGE_DIR / 'VERSION') as f:
     _version = f.read().strip()
@@ -57,8 +57,8 @@ setup(
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
-    packages=find_packages(exclude=('tests','notebooks',)),
-    package_data={'regression_model': ['VERSION']},
+    packages=find_packages(exclude=('tests','notebooks','api',))
+    package_data={'package_fop': ['VERSION']},
     install_requires=list_reqs(),
     extras_require={},
     include_package_data=True,
@@ -68,9 +68,6 @@ setup(
         # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy'
