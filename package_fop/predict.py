@@ -1,7 +1,7 @@
 import pandas as pd 
 
 import joblib 
-import package_fop import config
+from package_fop import config
 
 def make_prediction(input_data):
     # load model

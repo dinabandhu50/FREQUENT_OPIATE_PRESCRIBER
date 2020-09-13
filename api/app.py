@@ -1,32 +1,36 @@
 from flask import Flask, render_template, request, jsonify
-import joblib
-# import pickle
-from src import preprocessors as pp
-app = Flask(__name__)
 
-# def init():
-#     MODEL_PATH = './models/model.save'
-#     global model_saved
-#     saved_model = joblib.load(MODEL_PATH)
+from package_fop.predict import make_prediction
+from package_fop import config 
+
+import pandas as pd
+import joblib
+import sys 
+
+app = Flask(__name__)
 
 
 @app.route('/', methods=['GET', 'POST'])
 def front_end():
     return render_template('home.html')
 
+@app.route('/pred', methods=['GET', 'POST'])
+def test():
+    j_data = request.get_json()
+    df = pd.read_json(j_data)
+    
+    # data management
+    X_test, y_test = df.drop(config.TARGET,axis=1), df[config.TARGET]
+    
+    # pred
+    y_pred = make_prediction(X_test)
+    
+    # printing to console in the server console
+    # print(y_pred, file=sys.stdout)
 
-@app.route('/pred', methods=['POST'])
-def prediction():
-    data = request.get_json()
-    pred = saved_model.predict(data)
-    return jsonify(str(pred))
+    return {'Actual':str(y_test.values.reshape(-1,)),'Pred':str(y_pred)}
 
 
 if __name__ == '__main__':
-    MODEL_PATH = './models/model.save'
-    # with open(MODEL_PATH, 'rb') as fid:
-        # model_saved = pickle.load(fid)
-    saved_model = joblib.load(MODEL_PATH)
-    # init()
-    # app.run(debug=True)
+    app.run(debug=True)
     

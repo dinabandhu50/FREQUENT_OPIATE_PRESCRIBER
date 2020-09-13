@@ -21,5 +21,13 @@ The aim of this project is to reduce the death due to drug over dose. Here we ar
     4. The **_pipeline.py_** has the main pipeline
     5. The **_preprocessors.py_** has all the custom preprocessors.
 
-4. src folder:
-    1. src has all the python scripts for deployment easy style.
+4. package_fop folder:
+
+    1. This folder has all the python scripts for deployment easy style.
+    2. I have created the package of this package, so that later I can easily import it in Flask app.
+
+5. setup.py file:
+    1. To build the package use
+        > `python setup.py sdist bdist_wheel`
+    2. To locally install type below command from the directory where setup.py is present.
+        > `pip install -e .`
