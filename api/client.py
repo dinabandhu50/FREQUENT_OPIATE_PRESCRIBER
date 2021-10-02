@@ -1,10 +1,9 @@
 import requests
-import json
 import pandas as pd
 
 # test sample
 df = pd.read_csv('./data/test.csv')
-test_sample = df.sample(2).reset_index(drop=True)
+test_sample = df.sample(5).reset_index(drop=True)
 
 
 url = 'http://127.0.0.1:5000/pred'

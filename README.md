@@ -31,3 +31,5 @@ The aim of this project is to reduce the death due to drug over dose. Here we ar
         > `python setup.py sdist bdist_wheel`
     2. To locally install type below command from the directory where setup.py is present.
         > `pip install -e .`
+6. MANIFEST.in
+    1. This file contains the name of extensions which are not by default added to sdist/bdist. Because of the names the files get included in package.
